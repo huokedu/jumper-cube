@@ -14,28 +14,32 @@ $(document).ready(function () {
 
     var renderer = createRenderer(WIDTH, HEIGHT, $('#content'));
 
-    var scene = new THREE.Scene();
+    var level = new JumperCube.Level();
 
     var camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 100);
-    camera.position.z = 40;
+    camera.position.z = 10;
     camera.position.y = 2;
     camera.position.x = 2;
-    scene.add(camera);
+    level.add(camera);
 
     var pointLight = new THREE.PointLight(0xFFFFFF);
     pointLight.position.x = 10;
     pointLight.position.y = 50;
     pointLight.position.z = 130;
-    scene.add(pointLight);
+    level.add(pointLight);
 
-    var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xCC0000 });
-    var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1), cubeMaterial);
-    scene.add(cube);
+    var cube = new JumperCube.Objects.CubeObject(1, 1, 1, 0xff0000);
+    cube.addBehavior(JumperCube.Objects.Behaviors.Controlable);
+    level.add(cube);
 
     Keyboard.init();
 
+    var clock = new THREE.Clock();
     Utils.StartTick(() => {
-        camera.lookAt(cube.position);
-        renderer.render(scene, camera);
+        var deltaTime = clock.getDelta();
+
+        cube.update(deltaTime);
+        camera.lookAt(cube.body.position);
+        renderer.render(level.scene, camera);
     });
 });

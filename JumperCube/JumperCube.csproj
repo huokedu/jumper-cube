@@ -29,11 +29,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="Keyboard.ts" />
+    <TypeScriptCompile Include="JumperCube\Objects\Behaviors\Behavior.ts" />
+    <TypeScriptCompile Include="JumperCube\Objects\Behaviors\Controlable.ts" />
+    <TypeScriptCompile Include="JumperCube\Level.ts" />
+    <TypeScriptCompile Include="JumperCube\Objects\CubeObject.ts" />
+    <TypeScriptCompile Include="JumperCube\Objects\GameObject.ts" />
+    <TypeScriptCompile Include="JumperCube\Keyboard.ts" />
     <TypeScriptCompile Include="references.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\threejs\three.d.ts" />
-    <TypeScriptCompile Include="Utils.ts" />
+    <TypeScriptCompile Include="JumperCube\Utils.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
